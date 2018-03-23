@@ -1,0 +1,106 @@
+
+
+1. First I assign JSON dataset to variable nammed bigBangTheory.
+
+2. Have to write 3 functions as mentioned in assignent
+
+	a- Write a function that takes Season number and episode number as input and gives all the information about that particular episode as output.
+
+		//function to find episode by passing season number and episode number 
+		let findEpisodeBySeasonNoEpisodeNo = (seasonNo, episodeNo, bigBangTheoryObject) => {
+
+		    let flag = 0;
+		    let episode;
+		    //loop through every episode using for of loop
+		    for (episode of bigBangTheoryObject._embedded.episodes) {
+		        if (episode.number == episodeNo && episode.season == seasonNo) {
+		            flag = 1
+		            break; //if find then break out of the loop
+		        }
+		        else
+		        	//do nothing
+		    }
+		    //printing result using template literal
+		    if (flag) {
+		        console.log(`The Episode detail with Season No : ${seasonNo} and Episode No : ${episodeNo} is`)
+		        console.log(episode)
+		    } else
+		        console.log(`No Episode Found With Season No : ${seasonNo} and Episode No : ${episodeNo}`)
+		}
+
+		-In this function the inputs are seasonNo , episodeNo and bigBangTheoryJson Data set.
+		- If it finds the episode , it will print on concole otherwise it will print not found
+		- First function will loop through every episode of data set and if it matches , it will break out of the loop and will print coresponding output
+
+		-calling of function:
+		//function to find episode by passing seasion number and episode number 
+		let seasonNo =10;
+		let episodeNo = 1;
+		findEpisodeBySeasonNoEpisodeNo(seasonNo, episodeNo, bigBangTheory)
+
+	b-Write a function that can take any number of episode ids as input and returns all the information about those episodes.
+
+		//function to find episode by passing any number of episode id's
+		let findEpisodeByEpisodeIds = (bigBangTheoryObject, ...episodeId) => {
+
+		    let resultArray = []
+		    let flag = 0;
+		    //loop through every episode using for of loop
+		    for (id of episodeId) {
+		        for (episodes of bigBangTheoryObject._embedded.episodes) {
+		            if (episodes.id == id) {
+		                flag = 1;
+		                resultArray.push(episodes)
+		                break;//if find then break out of the inner most loop
+		            }
+		            else
+		            	//do nothing
+		        }
+		    }
+		    //printing result using template literal
+		    if (flag) {
+		        console.log(`Resulted Array`)
+		        console.log(resultArray)
+		    } else
+		        console.log(`No Episode Found With Episode id/s : ${episodeId}`)
+		}
+
+		- function will take any number if ids as input using rest parameter an will print array of episode matching the ids.
+
+		-calling of function:
+
+		//function to find episode by passing any number of episode id's
+		findEpisodeByEpisodeIds(bigBangTheory, 2915, 2930, 2918)
+
+	c-Write a function to search episode by its name.
+
+		//function to find episode by passing episode name
+		let findEpisodeByName = (episodeName, bigBangTheoryObject) => {
+
+		    let flag = 0;
+		    let episode;
+		     //loop through every episode using for of loop
+		    for (episode of bigBangTheoryObject._embedded.episodes) {
+		        if (episode.name.toLowerCase() == episodeName.toLowerCase()) {
+		            flag = 1;
+		            break; //if find then break out of the loop
+		        }
+		        else
+		            //do nothing
+		    }
+		    //printing result using template literal
+		    if (flag) {
+		        console.log(`The Episode detail with Episode Name : ${episodeName} is`)
+		        console.log(episode)
+		    } else
+		        console.log(`No Episode Found With Episode Name : ${episodeName}`)
+		}
+
+		-Function here is printing the information of episode matching the name .
+
+		-calling of function:
+
+				
+		//function to find episode by passing episode name
+		let episodeName = 'Pilot';
+		findEpisodeByName(episodeName, bigBangTheory)

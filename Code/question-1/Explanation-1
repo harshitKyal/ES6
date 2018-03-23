@@ -1,0 +1,36 @@
+1. In checkLogin function I have define allUsers array .
+
+//allUsers is an array of objects
+let allUsers = [
+
+    {
+        'email': 'harshitkyal@gmail.com',
+        'password': 123
+    },
+    {
+        'email': 'abc',
+        'password': 1234
+    }
+]
+
+-I have used let keyword instead of var and also used array function:
+
+let checkLogin = (email, password, allUsers) => {
+
+-here used for of loop to loop through every elements of allUser array
+
+for (currentUser of allUsers) {
+
+-in printing result , used template Literal
+
+console.log(`You are logged In`) //template literal
+
+2. Bubble sort
+
+-in this function I declare a rest parameter in function declaration
+
+let bubble_Sort = (...a) => {
+
+- for swaping I have used array matching
+
+ [x[i], x[i + 1]] = [x[i + 1], x[i]];
